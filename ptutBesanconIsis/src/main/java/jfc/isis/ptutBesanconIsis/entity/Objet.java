@@ -29,12 +29,14 @@ public class Objet {
     @Basic
     @Column(name = "url_photo")
     private String urlPhoto;
-    @Basic
-    @Column(name = "categorie_id")
-    private Integer categorieId;
-    @Basic
-    @Column(name = "salle_id")
-    private Integer salleId;
+
+    @ManyToOne
+    @JoinColumn(name = "categorie_id", referencedColumnName = "categorie_id", nullable = false)
+    private Categorie categorie_id;
+
+    @OneToOne
+    @JoinColumn(name = "salle_id", referencedColumnName = "salle_id", nullable = false)
+    private Categorie salle_id;
 
     public Integer getObjetId() {
         return objetId;
@@ -100,21 +102,6 @@ public class Objet {
         this.urlPhoto = urlPhoto;
     }
 
-    public Integer getCategorieId() {
-        return categorieId;
-    }
-
-    public void setCategorieId(Integer categorieId) {
-        this.categorieId = categorieId;
-    }
-
-    public Integer getSalleId() {
-        return salleId;
-    }
-
-    public void setSalleId(Integer salleId) {
-        this.salleId = salleId;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -132,9 +119,6 @@ public class Objet {
             return false;
         if (nbPossession != null ? !nbPossession.equals(objet.nbPossession) : objet.nbPossession != null) return false;
         if (urlPhoto != null ? !urlPhoto.equals(objet.urlPhoto) : objet.urlPhoto != null) return false;
-        if (categorieId != null ? !categorieId.equals(objet.categorieId) : objet.categorieId != null) return false;
-        if (salleId != null ? !salleId.equals(objet.salleId) : objet.salleId != null) return false;
-
         return true;
     }
 
@@ -148,8 +132,6 @@ public class Objet {
         result = 31 * result + (objetDescription != null ? objetDescription.hashCode() : 0);
         result = 31 * result + (nbPossession != null ? nbPossession.hashCode() : 0);
         result = 31 * result + (urlPhoto != null ? urlPhoto.hashCode() : 0);
-        result = 31 * result + (categorieId != null ? categorieId.hashCode() : 0);
-        result = 31 * result + (salleId != null ? salleId.hashCode() : 0);
         return result;
     }
 }

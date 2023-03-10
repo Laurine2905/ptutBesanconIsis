@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Objet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "objet_id")
+    @Column(name = "objet_id", insertable = false, updatable = false)
     private Integer objetId;
     @Basic
     @Column(name = "objet_nom")
@@ -36,7 +36,7 @@ public class Objet {
 
     @OneToOne
     @JoinColumn(name = "salle_id", referencedColumnName = "salle_id", nullable = false)
-    private Categorie salle_id;
+    private Salle salle_id;
 
     public Integer getObjetId() {
         return objetId;

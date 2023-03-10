@@ -20,9 +20,9 @@ public class Multimediacat {
     @Basic
     @Column(name = "url_audiocat")
     private String urlAudiocat;
-    @Basic
-    @Column(name = "categorie_id")
-    private Integer categorieId;
+    @OneToOne
+    @JoinColumn(name = "categorie_id", referencedColumnName = "categorie_id", nullable = false)
+    private Categorie categorie_id;
 
     public Integer getMulticatId() {
         return multicatId;
@@ -56,13 +56,6 @@ public class Multimediacat {
         this.urlAudiocat = urlAudiocat;
     }
 
-    public Integer getCategorieId() {
-        return categorieId;
-    }
-
-    public void setCategorieId(Integer categorieId) {
-        this.categorieId = categorieId;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -75,7 +68,6 @@ public class Multimediacat {
         if (urlPhotocat != null ? !urlPhotocat.equals(that.urlPhotocat) : that.urlPhotocat != null) return false;
         if (urlVideocat != null ? !urlVideocat.equals(that.urlVideocat) : that.urlVideocat != null) return false;
         if (urlAudiocat != null ? !urlAudiocat.equals(that.urlAudiocat) : that.urlAudiocat != null) return false;
-        if (categorieId != null ? !categorieId.equals(that.categorieId) : that.categorieId != null) return false;
 
         return true;
     }
@@ -86,7 +78,6 @@ public class Multimediacat {
         result = 31 * result + (urlPhotocat != null ? urlPhotocat.hashCode() : 0);
         result = 31 * result + (urlVideocat != null ? urlVideocat.hashCode() : 0);
         result = 31 * result + (urlAudiocat != null ? urlAudiocat.hashCode() : 0);
-        result = 31 * result + (categorieId != null ? categorieId.hashCode() : 0);
         return result;
     }
 }

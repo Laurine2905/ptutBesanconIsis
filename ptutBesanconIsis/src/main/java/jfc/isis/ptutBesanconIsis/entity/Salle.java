@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Salle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "salle_id")
+    @Column(name = "salle_id", insertable = false, updatable = false)
     private Integer salleId;
     @Basic
     @Column(name = "salle_nom")

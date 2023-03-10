@@ -21,9 +21,9 @@ public class Multimediaobj {
     @Basic
     @Column(name = "url_audioobj")
     private String urlAudioobj;
-    @Basic
-    @Column(name = "objet_id")
-    private Integer objetId;
+    @OneToOne
+    @JoinColumn(name = "objet_id", referencedColumnName = "objet_id", nullable = false)
+    private Objet objet_id;
 
     public Integer getMultiobjId() {
         return multiobjId;
@@ -57,14 +57,6 @@ public class Multimediaobj {
         this.urlAudioobj = urlAudioobj;
     }
 
-    public Integer getObjetId() {
-        return objetId;
-    }
-
-    public void setObjetId(Integer objetId) {
-        this.objetId = objetId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -76,8 +68,6 @@ public class Multimediaobj {
         if (urlPhotoobj != null ? !urlPhotoobj.equals(that.urlPhotoobj) : that.urlPhotoobj != null) return false;
         if (urlVideoobj != null ? !urlVideoobj.equals(that.urlVideoobj) : that.urlVideoobj != null) return false;
         if (urlAudioobj != null ? !urlAudioobj.equals(that.urlAudioobj) : that.urlAudioobj != null) return false;
-        if (objetId != null ? !objetId.equals(that.objetId) : that.objetId != null) return false;
-
         return true;
     }
 
@@ -87,7 +77,6 @@ public class Multimediaobj {
         result = 31 * result + (urlPhotoobj != null ? urlPhotoobj.hashCode() : 0);
         result = 31 * result + (urlVideoobj != null ? urlVideoobj.hashCode() : 0);
         result = 31 * result + (urlAudioobj != null ? urlAudioobj.hashCode() : 0);
-        result = 31 * result + (objetId != null ? objetId.hashCode() : 0);
         return result;
     }
 }

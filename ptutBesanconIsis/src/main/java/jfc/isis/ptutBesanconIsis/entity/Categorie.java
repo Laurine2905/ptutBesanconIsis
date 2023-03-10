@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Categorie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "categorie_id")
+    @Column(name = "categorie_id", insertable = false, updatable = false)
     private Integer categorieId;
     @Basic
     @Column(name = "categorie_nom")

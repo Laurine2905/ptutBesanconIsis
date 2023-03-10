@@ -9,6 +9,9 @@ public class Multimediacat {
     @Column(name = "multicat_id")
     private Integer multicatId;
     @Basic
+    @Column(name = "description")
+    private String description;
+    @Basic
     @Column(name = "url_photocat")
     private String urlPhotocat;
     @Basic

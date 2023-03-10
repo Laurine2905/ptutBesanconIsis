@@ -8,6 +8,10 @@ public class Multimediaobj {
     @Id
     @Column(name = "multiobj_id")
     private Integer multiobjId;
+
+    @Basic
+    @Column(name = "description")
+    private String description;
     @Basic
     @Column(name = "url_photoobj")
     private String urlPhotoobj;
